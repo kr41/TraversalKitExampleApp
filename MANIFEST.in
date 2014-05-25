@@ -1,0 +1,2 @@
+include *.txt *.ini *.cfg *.rst
+recursive-include traversalkitexampleapp *.ico *.png *.gif *.jpg *.css *.js *.mako *.yaml

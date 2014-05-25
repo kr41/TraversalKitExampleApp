@@ -1,0 +1,7 @@
+syntax: glob
+
+*.pyc
+*.~
+traversal-kit-example-app.sublime*
+TraversalKitExampleApp.egg-info
+database.sqlite
