@@ -19,8 +19,11 @@
 
 % for post in posts:
     <article>
-        <h3><a href="${request.resource_url(post)}">${post.title}</a></h3>
-        <p><small class="text-muted">${post.published}</small></p>
+        <h3>
+            <img class="avatar img-rounded" src="http://lorempixel.com/150/150/nature/${post.id}/" alt="${post.title}">
+            <a href="${request.resource_url(post)}">${post.title}</a>
+        </h3>
+        <p><small class="text-muted">${post.published.strftime('%A, %d %B %Y')}</small></p>
         ${h.markdown(post.body)}
         % if authors:
             <% author = authors[post.author] %>
