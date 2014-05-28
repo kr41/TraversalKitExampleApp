@@ -45,10 +45,14 @@ class Author(Resource):
 
 
 @SiteRoot.mount('blog')
+@Author.mount('articles')
 class Blog(Resource):
 
-    title = 'Blog'
     page_len = 5
+
+    @reify
+    def title(self):
+        return 'Articles' if self.parent(cls=Author) else 'Blog'
 
     def page(self, num):
         if num < 1 or num > self.page_count:
@@ -56,9 +60,8 @@ class Blog(Resource):
                 'Page num should be within the range 1..%s' % self.page_count
             )
         offset = (num - 1) * self.page_len
-        session = models.DBSession()
-        query = session \
-            .query(models.Post) \
+        query = self._base_query()
+        query = query \
             .order_by(models.Post.published.desc()) \
             .offset(offset) \
             .limit(self.page_len)
@@ -71,8 +74,16 @@ class Blog(Resource):
 
     @reify
     def post_count(self):
+        return self._base_query().count()
+
+    def _base_query(self):
         session = models.DBSession()
-        return session.query(models.Post).count()
+        query = session.query(models.Post)
+        author = self.parent(cls=Author)
+        if author:
+            query = query.filter(models.Post.author == author.id)
+        return query
+
 
 
 @Blog.mount_set(DEC_ID)
@@ -86,6 +97,9 @@ class Post(Resource):
             query = session \
                 .query(models.Post) \
                 .filter(models.Post.id == int(self.__name__))
+            author = self.parent(cls=Author)
+            if author:
+                query = query.filter(models.Post.author == author.id)
             post = query.one()
         self.id = post.id
         self.title = post.title
