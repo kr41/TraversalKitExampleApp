@@ -20,11 +20,21 @@ class Authors(Resource):
 
     title = 'Authors'
 
-    def all(self):
+    def all(self, ids=None):
         session = models.DBSession()
         query = session.query(models.Author)
+        if ids:
+            query = query.filter(models.Author.id.in_(ids))
         for author in query.all():
             yield self.child(Author, author.username, author)
+
+    def by_id(self, id):
+        session = models.DBSession()
+        query = session \
+            .query(models.Author) \
+            .filter(models.Author.id == id)
+        author = query.one()
+        return self.child(Author, author.username, author)
 
 
 @Authors.mount_set(TEXT_ID)
@@ -105,3 +115,4 @@ class Post(Resource):
         self.title = post.title
         self.published = post.published
         self.body = post.body
+        self.author = post.author

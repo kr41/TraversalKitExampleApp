@@ -26,13 +26,25 @@ def blog_index(context, request):
         posts = list(context.page(page_num))
     except ValueError:
         raise HTTPNotFound()
+    authors = {}
+    if not context.parent(cls=resources.Author):
+        ids = set(p.author for p in posts)
+        print ids
+        authors = dict((a.id, a) for a in request.root['authors'].all(ids))
     return {
         'posts': posts,
         'page_num': page_num,
         'page_count': context.page_count,
+        'authors': authors,
     }
 
 
 @view_config(context=resources.Post, renderer='/blog/post.mako')
 def post(context, request):
-    return {'post': context}
+    author = None
+    if not context.parent(cls=resources.Author):
+        author = request.root['authors'].by_id(context.author)
+    return {
+        'post': context,
+        'author': author,
+    }

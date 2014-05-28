@@ -22,6 +22,10 @@
         <h3><a href="${request.resource_url(post)}">${post.title}</a></h3>
         <p><small class="text-muted">${post.published}</small></p>
         ${h.markdown(post.body)}
+        % if authors:
+            <% author = authors[post.author] %>
+            <p><small class="text-muted">Posted by <a href="${request.resource_url(author)}">${author.name}</a></small></p>
+        % endif
     </article>
 % endfor
 
