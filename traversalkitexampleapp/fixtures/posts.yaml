@@ -2,6 +2,7 @@
     id: 7
     title: Lorem ipsum
     published: !!timestamp '2014-05-26'
+    author: 1
     body: |
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut
         placerat elit. Vivamus nec dignissim massa. Aliquam ut sagittis sem,
@@ -27,6 +28,7 @@
     id: 6
     title: Morbi at felis
     published: !!timestamp '2014-05-25'
+    author: 1
     body: |
         Morbi at felis sit amet sapien convallis faucibus. Vivamus a purus
         egestas, imperdiet nisl vel, consequat turpis. Suspendisse ligula
@@ -50,6 +52,7 @@
     id: 5
     title: Aliquam id libero dolor
     published: !!timestamp '2014-05-24'
+    author: 2
     body: |
         Aliquam id libero dolor. Vivamus aliquam ullamcorper elit id imperdiet.
         Phasellus blandit enim risus, in fringilla eros lacinia et. Phasellus
@@ -66,6 +69,7 @@
     id: 4
     title: Cras scelerisque
     published: !!timestamp '2014-05-23'
+    author: 1
     body: |
         Cras scelerisque risus ut lacus tincidunt sodales. Pellentesque at
         rutrum lorem, vel consectetur eros. Aliquam vel nibh urna. Mauris nec
@@ -96,6 +100,7 @@
     id: 3
     title: Phasellus commodo
     published: !!timestamp '2014-05-22'
+    author: 2
     body: |
         Phasellus commodo, est non feugiat sodales, sapien risus ultrices
         libero, sit amet bibendum urna urna eu nunc. Nullam a justo quis nisi
@@ -119,6 +124,7 @@
     id: 2
     title: Phasellus mollis est sit amet
     published: !!timestamp '2014-05-21'
+    author: 2
     body: |
         Phasellus mollis est sit amet arcu tempor, non elementum arcu
         consequat. Aenean elementum, libero eget ornare pretium, elit ligula
@@ -150,6 +156,7 @@
     id: 1
     title: Duis tincidunt bibendum ipsum
     published: !!timestamp '2014-05-20'
+    author: 2
     body: |
         Duis tincidunt bibendum ipsum ut sagittis. Nulla non lorem posuere,
         vehicula enim et, pharetra justo. Ut vehicula ipsum et nisl adipiscing,

@@ -11,6 +11,7 @@
     <meta name="author" content="Dmitry Vakhrushev">
     <title>${' - '.join(r.title for r in lineage)}</title>
     <link href="${request.static_url('traversalkitexampleapp:static/css/bootstrap.min.css')}" rel="stylesheet">
+    <link href="${request.static_url('traversalkitexampleapp:static/css/custom.css')}" rel="stylesheet">
 </head>
 <body>
     <div class="navbar navbar-inverse">
@@ -18,6 +19,7 @@
             <a class="navbar-brand" href="${request.resource_url(request.root)}">${request.root.title}</a>
             <ul class="nav navbar-nav">
                 ${menu_item(request.root['blog'])}
+                ${menu_item(request.root['authors'])}
             </ul>
         </div>
     </div>

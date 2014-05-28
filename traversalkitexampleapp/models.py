@@ -45,3 +45,13 @@ class Post(Base):
     title = Column(Unicode(255))
     published = Column(DateTime)
     body = Column(Text)
+    author = Column(Integer)
+
+
+class Author(Base):
+    __tablename__ = 'authors'
+
+    id = Column(Integer, primary_key=True)
+    username = Column(Unicode(255))
+    name = Column(Unicode(255))
+    about = Column(Text)

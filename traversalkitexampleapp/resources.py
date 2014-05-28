@@ -1,7 +1,7 @@
 import math
 
 from pyramid.decorator import reify
-from traversalkit import Resource, DEC_ID
+from traversalkit import Resource, DEC_ID, TEXT_ID
 
 from . import models
 
@@ -13,6 +13,35 @@ def root_factory(request):
 class SiteRoot(Resource):
 
     title = 'TraversalKit Example Application'
+
+
+@SiteRoot.mount('authors')
+class Authors(Resource):
+
+    title = 'Authors'
+
+    def all(self):
+        session = models.DBSession()
+        query = session.query(models.Author)
+        for author in query.all():
+            yield self.child(Author, author.username, author)
+
+
+@Authors.mount_set(TEXT_ID)
+class Author(Resource):
+
+    __not_exist__ = models.NoResultFound
+
+    def on_init(self, author):
+        if author is None:
+            session = models.DBSession()
+            query = session \
+                .query(models.Author) \
+                .filter(models.Author.username == self.__name__)
+            author = query.one()
+        self.id = author.id
+        self.title = self.name = author.name
+        self.about = author.about
 
 
 @SiteRoot.mount('blog')
