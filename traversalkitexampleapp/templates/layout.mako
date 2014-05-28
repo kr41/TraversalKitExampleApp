@@ -11,10 +11,15 @@
     <link href="${request.static_url('traversalkitexampleapp:static/css/bootstrap.min.css')}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h3 class="text-muted"><a class="text-muted" href="${request.resource_url(request.root)}">${request.root.title}</a></h3>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand" href="${request.resource_url(request.root)}">${request.root.title}</a>
+            <ul class="nav navbar-nav">
+                ${menu_item(request.root['blog'])}
+            </ul>
         </div>
+    </div>
+    <div class="container">
         <div>
             ${next.body()}
         </div>
@@ -24,3 +29,9 @@
 </body>
 
 </html>
+
+<%def name="menu_item(resource)">
+    <li class="${'active' if resource == request.context else ''}">
+        <a href="${request.resource_url(resource)}">${resource.title}</a>
+    </li>
+</%def>

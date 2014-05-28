@@ -7,12 +7,18 @@ from . import models
 
 
 def root_factory(request):
-    return Blog()
+    return SiteRoot()
 
 
+class SiteRoot(Resource):
+
+    title = 'TraversalKit Example Application'
+
+
+@SiteRoot.mount('blog')
 class Blog(Resource):
 
-    title = 'TraversalKit Demo'
+    title = 'Blog'
     page_len = 5
 
     def page(self, num):

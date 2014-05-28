@@ -4,6 +4,11 @@ from pyramid.view import view_config
 from . import resources
 
 
+@view_config(context=resources.SiteRoot, renderer='/siteroot/home.mako')
+def home(context, request):
+    return {}
+
+
 @view_config(context=resources.Blog, renderer='/blog/index.mako')
 def index(context, request):
     try:
