@@ -15,12 +15,14 @@ Base = declarative_base()
 
 
 def configure(settings):
+    """ Configure database """
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
 
 
 def initialize():
+    """ Create database and load fixtures """
     Base.metadata.create_all()
     here = os.path.abspath(os.path.dirname(__file__))
     fixtures = os.path.join(here, 'fixtures')
