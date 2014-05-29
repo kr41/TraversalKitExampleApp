@@ -6,7 +6,7 @@ as their routing method.  It's assumed that you're familiar
 with Pyramid and able to develop simple Pyramid application.  Since the
 application has the most permissive license ever, you can use as you want to do.
 
-To run application get the source code and run the following commands:
+To run application get the source code and run the following commands::
 
     $ cd <directory containing this file>
     $ $VENV/bin/python setup.py develop
