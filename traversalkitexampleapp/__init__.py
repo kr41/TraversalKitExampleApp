@@ -8,6 +8,9 @@ def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application """
     models.configure(settings)
     models.initialize()
+    # It's bad idea to create database and load fixtures during application
+    # start.  However it's OK for quick start in educational application.
+    # Just don't do that in your production ones.
     config = Configurator(
         settings=settings,
         root_factory=resources.root_factory
