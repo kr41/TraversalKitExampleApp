@@ -21,6 +21,7 @@ Visit http://localhost:6543 using your favorite browser.
 
 Copyright © 2014 Dmitry Vakhrushev <self@kr41.net>
 
-This work is free. You can redistribute it and/or modify it under the
-terms of the Do What The Fuck You Want To Public License, Version 2,
-as published by Sam Hocevar. See the LICENSE.txt file for more details.
+This work is free. It comes without any warranty, to the extent permitted by
+applicable law. You can redistribute it and/or modify it under the terms of the
+Do What The Fuck You Want To Public License, Version 2, as published by Sam
+Hocevar. See the LICENSE.txt file for more details.
