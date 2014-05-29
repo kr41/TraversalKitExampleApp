@@ -3,7 +3,7 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
+with open(os.path.join(here, 'README.rst')) as f:
     README = f.read()
 
 requires = [
@@ -23,7 +23,7 @@ requires = [
 setup(
     name='TraversalKitExampleApp',
     version='0.0',
-    description='TraversalKitExampleApp',
+    description='TraversalKit example application',
     long_description=README,
     classifiers=[
         "Programming Language :: Python",
@@ -33,6 +33,7 @@ setup(
     ],
     author='Dmitry Vakhrushev',
     author_email='self@kr41.net',
+    license='WTFPL',
     url='https://bitbucket.org/kr41/traversalkitexampleapp',
     keywords='web wsgi bfg pylons pyramid traversal traversalkit',
     packages=find_packages(),

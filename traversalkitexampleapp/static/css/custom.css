@@ -1,3 +1,8 @@
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
 .avatar {
     float: left;
     margin: 0 10px 10px 0;
