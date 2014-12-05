@@ -2,6 +2,6 @@ syntax: glob
 
 *.pyc
 *.~
-traversal-kit-example-app.sublime*
+*.sublime*
 TraversalKitExampleApp.egg-info
 database.sqlite
