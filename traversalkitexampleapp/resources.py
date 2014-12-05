@@ -29,7 +29,7 @@ class Authors(Resource):
         if ids:
             query = query.filter(models.Author.id.in_(ids))
         for author in query.all():
-            yield self.child(Author, author.username, author)
+            yield self.get(author.username, author)
 
     def by_id(self, id):
         """ Loads Author resource by ID """
@@ -38,7 +38,7 @@ class Authors(Resource):
             .query(models.Author) \
             .filter(models.Author.id == id)
         author = query.one()
-        return self.child(Author, author.username, author)
+        return self.get(author.username, author)
 
 
 @Authors.mount_set(TEXT_ID)
@@ -88,7 +88,7 @@ class Blog(Resource):
             .order_by(models.Post.published.desc()) \
             .offset(offset) \
             .limit(self.page_len)
-        return (self.child(Post, str(post.id), post) for post in query.all())
+        return (self.get(str(post.id), post) for post in query.all())
 
     @reify
     def page_count(self):
@@ -110,7 +110,6 @@ class Blog(Resource):
             # query will return only author's posts.
             query = query.filter(models.Post.author == author.id)
         return query
-
 
 
 @Blog.mount_set(DEC_ID)

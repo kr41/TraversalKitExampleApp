@@ -15,7 +15,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
-    'TraversalKit',
+    'TraversalKit>=0.2',
     'Markdown',
     'pyyaml',
 ]
