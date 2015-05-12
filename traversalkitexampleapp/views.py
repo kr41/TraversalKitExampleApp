@@ -38,7 +38,6 @@ def blog_index(context, request):
         # then we need to render link to author's profile.  Therefore
         # we need to get author resources.
         ids = set(p.author for p in posts)
-        print ids
         authors = dict((a.id, a) for a in request.root['authors'].all(ids))
     return {
         'posts': posts,
